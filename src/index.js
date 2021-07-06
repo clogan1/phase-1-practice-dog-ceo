@@ -20,26 +20,42 @@ function addImages(dog) {
 //Challenge 2 
 
 //fetch data
+// fetch('https://dog.ceo/api/breeds/list/all')
+// .then(res => res.json())
+// .then(json => {
+
+//     for (breed in json.message) {
+//         console.log([breed].length)
+
+//         //work in progress section
+//         if (json.message.breed.length === 0 ) {
+//             for (subBreed of breed){
+//                 addBreeds(subBreed)
+//             }
+//         }
+//         //work in progress end
+
+
+        
+
+//         addBreeds(breed)
+//     }
+
+// })
+
+
+//fetch data
 fetch('https://dog.ceo/api/breeds/list/all')
 .then(res => res.json())
 .then(json => {
 
     for (breed in json.message) {
-        console.log([breed].length)
-
-        //work in progress section
-        if (json.message.breed.length === 0 ) {
-            for (subBreed of breed){
-                addBreeds(subBreed)
-            }
+        if (json.message[breed] != '') {
+            json.message[breed].forEach(addBreeds)
         }
-        //work in progress end
-
         addBreeds(breed)
     }
-
 })
-
 
 //function for DOM manipulation
 
